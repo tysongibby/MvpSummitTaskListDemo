@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.JSInterop;
 using MvpSummit.Domain;
 
@@ -85,7 +86,7 @@ namespace MvpSummitWasm.Data
 
             var source = restore ? $"Data Source={backupName}" : $"Data Source={dbFilename}";
             var target = restore ? $"Data Source={dbFilename}" : $"Data Source={backupName}";
-            /*using var src = new SqliteConnection(source);
+            using var src = new SqliteConnection(source);
             using var tgt = new SqliteConnection(target);
 
             src.Open();
@@ -94,7 +95,7 @@ namespace MvpSummitWasm.Data
             src.BackupDatabase(tgt);
 
             tgt.Close();
-            src.Close();*/
+            src.Close();
 
             Console.WriteLine($"End {dir}.");
         }
